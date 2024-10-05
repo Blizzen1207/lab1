@@ -13,4 +13,4 @@
   - 3.файл не существует
   
 Реализация: через сигналы и слоты QT
-![uml1](https://github.com/user-attachments/assets/c54c841b-2018-4284-9162-265b66942bd5)
+![uml_1](https://github.com/user-attachments/assets/a42878ce-c067-42cc-b9cd-47745d03c06b)
