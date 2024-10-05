@@ -6,32 +6,30 @@
 #include <QList>
 
 
-class Monitor : public QObject//класс наследник qobject т.к работаем с сигналами
+class Monitor : public QObject // класс наследник qobject т.к работаем с сигналами
 {
 private:
-    Q_OBJECT
-    QList<StateFile> objects;
+    Q_OBJECT // для корректной работы механизма сигналов и слотов
+    QList<StateFile> objects; // контейнер для файлов
 
-    Monitor(){}
-    ~Monitor(){}
-    Monitor(Monitor const &);
-    Monitor& operator=(Monitor const&);
+    Monitor(){} // конструктор по умолчанию
+    ~Monitor(){} // диструктор
 public:
-    static Monitor& Instance()
+    static Monitor& Instance() // статический метод
     {
-        static Monitor s;
-        return s;
+        static Monitor s; // статический объект
+        return s; // возвращаем ссылку
     }
-    bool AddFile(QString path);
-    bool DelFile(QString path);
+    bool AddFile(QString path); // добавлениие файла в монитор
+    bool DelFile(QString path); // удаление файла из монитора
 signals:
-    void Resized(QString path, qint64 size);// сигнал если изменился размер
-    void Exist(QString path,qint64 size);//сигнал если файл начал существовать
-    void NotExist(QString path);//сигнал если файл перестал существовать или не существовал
-    void FirstOut(QString path,qint64 size,bool isExist);//сигнал для первого вывода информации о добавленном файле
+    void Resized(QString path, qint64 size); // сигнал если изменился размер
+    void Exist(QString path,qint64 size); // сигнал если файл начал существовать
+    void NotExist(QString path); // сигнал если файл перестал существовать или не существовал
+    void FirstOut(QString path,qint64 size,bool isExist); // сигнал для первого вывода информации о добавленном файле
 
 public slots:
-    void update();//слот для обновления информации о файлах
+    void update(); // слот для обновления информации о файлах
 };
 
 #endif // MONITOR_H

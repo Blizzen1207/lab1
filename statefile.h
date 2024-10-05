@@ -3,24 +3,21 @@
 #include <QString>
 #include <QFileInfo>
 
-class StateFile
+class StateFile // класс инфы о файле
 {
-    QString FileName;//путь до файла
-    qint64 size;//размер файла
-    bool isExist;//флаг существования
+    QString FileName; // путь до файла
+    qint64 size; // размер файла
+    bool isExist; // факт существования
 public:
-    StateFile();//конструктор по умолчанию
-    StateFile(QString path);//коструктор с аргументом QString
-    bool operator==(const StateFile& e1) const;//перегрузка оператора сравнения
-    bool update();//функция обновления информации о файле
-    //Getters
-    QString GetFileName();
-    qint64 GetSize();
-    bool GetExist();
-public:
+    StateFile(); // конструктор по умолчанию
+    StateFile(QString path); // коструктор с аргументом QString
     StateFile(const StateFile& temp);//конструктор копирования
-    StateFile& operator =(const StateFile& temp);//перегрузка оператора присваивания
+    bool operator==(const StateFile& e1) const; // перегрузка оператора сравнения
+    bool update(); // функция обновления информации о файле
 
-
+    //Getters (получить)
+    QString GetFileName(); // путь
+    qint64 GetSize(); // размер
+    bool GetExist(); // факт сущестовования
 };
 #endif // STATEFILE_H
